@@ -1,0 +1,46 @@
+[project]
+name = "restfull-api-testing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pytest-dotenv>=0.5.2",
+    "pytest-html>=4.1.1",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "ruff>=0.11.7",
+]
+
+[tool.pytest.ini_options]
+# Define where pytest should look for tests
+pythonpath = ["."]
+testpaths = ["tests"]
+
+# Define patterns for test discovery
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+# Automatically add command-line options when running pytest
+addopts = "-v --color=yes --html=report.html --self-contained-html"
+
+# Optional: Add markers if you use them (uncomment and list them)
+# markers = [
+#    "smoke: mark tests as smoke tests",
+#    "regression: mark tests as regression tests",
+# ]
+
+# Optional: Configure log output if needed (uncomment and configure)
+# log_cli = true
+# log_cli_level = "INFO"
+# log_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+# log_date_format = "%Y-%m-%d %H:%M:%S"
+
+# Note: pyproject.toml uses TOML format. Strings are enclosed in double quotes.
+# Lists are enclosed in square brackets.
