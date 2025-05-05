@@ -14,8 +14,8 @@ Also used the new `uv` python package and project manager to improve dependence 
 Automation_Projects/
 └── restfull-api-testing/
     ├── README.md       # Project documentation
-    ├── .md       # logo files
-    ├── Postman       # Postman
+    ├── .md             # logo files
+    ├── Postman         # Postman
     ├── src/            # source files
         └── helpers/    # Helper modules
     ├── tests/          # Test scripts
