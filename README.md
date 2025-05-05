@@ -1,8 +1,6 @@
 # RESTful API Testing
 
-<img src=".md\uv_logo.png" alt="uv" style="width:100px;"/>
-<img src=".md\pytest.png" alt="pytest" style="width:50px;"/>
-<img src=".md\png-transparent-postman-hd-logo-thumbnail.png" alt="postman" style="width:50px;"/>
+<img src=".md\uv_logo.png" alt="uv" style="width:100px;"/><img src=".md\pytest.png" alt="pytest" style="width:50px;"/><img src=".md\png-transparent-postman-hd-logo-thumbnail.png" alt="postman" style="width:50px;"/>
 
 
 This project contains postman and automation scripts for testing RESTful APIs on: 
@@ -43,26 +41,21 @@ Automation_Projects/
    ```
 2. Navigate to the project directory:
    ```powershell
-   
-   
+   cd .\restfull-api-testing\
    ```
 3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd restfull-api-testing
-   ```
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+   ```powershell
+   uv sync
+   OR
+   try: uv sync --all-groups
    ```
 
 ## Running Tests
 
 Run all tests using `pytest`:
-```bash
+```powershell
+pytest
+OR
 pytest tests/
 ```
 
