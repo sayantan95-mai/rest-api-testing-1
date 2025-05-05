@@ -1,7 +1,14 @@
 # RESTful API Testing
 
+<img src=".md\uv_logo.png" alt="pytest" style="width:100px;"/>
+<img src=".md\pytest.png" alt="pytest" style="width:50px;"/>
+<img src=".md\png-transparent-postman-hd-logo-thumbnail.png" alt="pytest" style="width:50px;"/>
+
+
 This project contains postman and automation scripts for testing RESTful APIs on: 
-```https://restful-booker.herokuapp.com/apidoc/index.html ```
+```https://restful-booker.herokuapp.com/apidoc/index.html ```.
+
+Also used the new `uv` python package and project manager to improve dependence and virtual environment creaction.
 
 ## Folder Structure
 
@@ -25,9 +32,23 @@ Automation_Projects/
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
+1. Install uv `Powershell`:
+   ```powershell
+   python -V ; pip -V
+   pip install uv
+   ```
+2. Clone the repository:
+   ```powershell
    git clone https://github.com/your-repo/restfull-api-testing.git
+   ```
+2. Navigate to the project directory:
+   ```powershell
+   
+   
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
    ```
 2. Navigate to the project directory:
    ```bash
