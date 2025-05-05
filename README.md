@@ -1,8 +1,8 @@
 # RESTful API Testing
 
-<img src=".md\uv_logo.png" alt="pytest" style="width:100px;"/>
+<img src=".md\uv_logo.png" alt="uv" style="width:100px;"/>
 <img src=".md\pytest.png" alt="pytest" style="width:50px;"/>
-<img src=".md\png-transparent-postman-hd-logo-thumbnail.png" alt="pytest" style="width:50px;"/>
+<img src=".md\png-transparent-postman-hd-logo-thumbnail.png" alt="postman" style="width:50px;"/>
 
 
 This project contains postman and automation scripts for testing RESTful APIs on: 
