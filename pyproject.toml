@@ -30,17 +30,8 @@ python_functions = ["test_*"]
 # Automatically add command-line options when running pytest
 addopts = "-v --color=yes --html=C:\\Report\\report.html --self-contained-html"
 
-# Optional: Add markers if you use them (uncomment and list them)
-# markers = [
-#    "smoke: mark tests as smoke tests",
-#    "regression: mark tests as regression tests",
-# ]
-
 # Optional: Configure log output if needed (uncomment and configure)
 # log_cli = true
 # log_cli_level = "INFO"
 # log_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
 # log_date_format = "%Y-%m-%d %H:%M:%S"
-
-# Note: pyproject.toml uses TOML format. Strings are enclosed in double quotes.
-# Lists are enclosed in square brackets.
