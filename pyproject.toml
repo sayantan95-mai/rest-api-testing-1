@@ -28,7 +28,7 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 
 # Automatically add command-line options when running pytest
-addopts = "-v --color=yes --html=C:\\Report\\report.html --self-contained-html"
+addopts = "-v --color=yes --html=pytest_report.html --self-contained-html"
 
 # Optional: Configure log output if needed (uncomment and configure)
 # log_cli = true
