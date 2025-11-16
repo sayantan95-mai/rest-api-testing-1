@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Your project specifies Python 3.13 in .python-version
+        # Your project specifies Python 3.13
         python-version: ["3.13"] 
 
     steps:
@@ -34,8 +34,8 @@ jobs:
 
     - name: Run linter (Ruff)
       run: |
-        ruff check .
-        ruff format --check .
+        uv run ruff check .
+        uv run ruff format --check .
 
     - name: Run tests (Pytest)
       env:
@@ -45,4 +45,4 @@ jobs:
         API_USERNAME: ${{ secrets.API_USERNAME }}
         API_PASSWORD: ${{ secrets.API_PASSWORD }}
       run: |
-        pytest
+        uv run pytest
