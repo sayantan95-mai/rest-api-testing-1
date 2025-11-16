@@ -7,10 +7,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class BookingHelper:
     """
     Provides methods for interacting with the booking endpoints.
     """
+
     def __init__(self, api_client: APIClient):
         """
         Initializes the BookingHelper with an APIClient instance.
@@ -22,7 +24,9 @@ class BookingHelper:
             raise TypeError("api_client must be an instance of APIClient")
         self.api_client = api_client
         # Use relative path from config
-        self.booking_endpoint = config.BOOKING_URL.replace(config.BASE_URL, '').lstrip('/')
+        self.booking_endpoint = config.BOOKING_URL.replace(config.BASE_URL, "").lstrip(
+            "/"
+        )
 
     def get_booking_ids(self, params=None):
         """Gets booking IDs, optionally filtered by params."""
@@ -30,7 +34,7 @@ class BookingHelper:
         # APIClient's send_request will raise exceptions on failure
         response = self.api_client.get(self.booking_endpoint, params=params)
         # Assuming success returns 200 and JSON list
-        return response # Let the caller handle .json() and specific status checks
+        return response  # Let the caller handle .json() and specific status checks
 
     def get_booking(self, booking_id):
         """Gets details for a specific booking ID."""
@@ -51,9 +55,9 @@ class BookingHelper:
     def _get_auth_headers(self, token: str) -> dict:
         """Helper to create authentication headers."""
         if not token:
-             raise ValueError("Authentication token required for this operation.")
+            raise ValueError("Authentication token required for this operation.")
         # Create headers based on default, adding the auth token
-        headers = self.api_client.default_headers.copy() # Start with client defaults
+        headers = self.api_client.default_headers.copy()  # Start with client defaults
         headers["Cookie"] = f"token={token}"
         # Note: Some APIs might expect 'Authorization: Bearer <token>' instead
         return headers
@@ -69,7 +73,9 @@ class BookingHelper:
 
     def partial_update_booking(self, booking_id, partial_data, token: str):
         """Partially updates an existing booking. Requires auth token."""
-        logger.info(f"Partially updating booking ID {booking_id} with data: {partial_data}")
+        logger.info(
+            f"Partially updating booking ID {booking_id} with data: {partial_data}"
+        )
         endpoint = f"{self.booking_endpoint}/{booking_id}"
         headers = self._get_auth_headers(token)
         # Ensure Accept header is set if API requires it, client defaults should handle this

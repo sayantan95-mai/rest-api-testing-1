@@ -1,6 +1,7 @@
 import config as cfg  # Imports configuration like the health check URL
 from src.api_client import APIClient  # Imports the client used to make API requests
 
+
 def check_api_health(api_client):
     """
     Checks the health of the API using the configured endpoint.
@@ -13,7 +14,7 @@ def check_api_health(api_client):
     """
     try:
         # Use the provided API client to make a GET request to the health check URL
-        response = api_client.get(cfg.healthcheck_url) #
+        response = api_client.get(cfg.healthcheck_url)  #
 
         # Check if we got a response and the status code is 200 (OK) or 201 (Created)
         if response and response.status_code in [200, 201]:
@@ -21,8 +22,8 @@ def check_api_health(api_client):
             return True
         else:
             # If the response exists but the status code is wrong, print the details
-            status_code = response.status_code if response else 'N/A'
-            text = response.text if response else 'N/A'
+            status_code = response.status_code if response else "N/A"
+            text = response.text if response else "N/A"
             print(f"Health check failed. Status: {status_code}, Response: {text}")
             return False
 
@@ -31,10 +32,11 @@ def check_api_health(api_client):
         print(f"An error occurred during health check: {e}")
         return False
 
+
 # This part only runs when you execute this script directly
 if __name__ == "__main__":
     # Create an instance of the APIClient, using the base URL from config
-    client = APIClient(base_url=cfg.base_url) #
+    client = APIClient(base_url=cfg.base_url)  #
 
     # Call the function to perform the health check
     is_healthy = check_api_health(client)

@@ -3,10 +3,11 @@ import pytest
 import os
 import json
 from src.api_client import APIClient
-from src import config # Import your config module
-from src.helpers.auth import authenticate # Import auth helper
+from src import config  # Import your config module
+from src.helpers.auth import authenticate  # Import auth helper
 
 # --- Session-Scoped Fixtures (Run Once) ---
+
 
 @pytest.fixture(scope="session")
 def base_url():
@@ -16,19 +17,21 @@ def base_url():
         pytest.fail("API_BASE_URL environment variable not set or config not loaded.")
     return config.BASE_URL
 
+
 @pytest.fixture(scope="session")
 def api_client(base_url):
     """Fixture to provide a basic, unauthenticated APIClient instance."""
     # Uses the base_url fixture and default headers from config
     return APIClient(base_url=base_url, default_headers=config.DEFAULT_HEADERS)
 
+
 @pytest.fixture(scope="session")
 def sample_booking_data():
     """Fixture to load sample booking data, e.g., from a JSON file."""
     # Construct path relative to this conftest.py file
-    data_path = os.path.join(os.path.dirname(__file__), 'data', 'booking_data.json')
+    data_path = os.path.join(os.path.dirname(__file__), "data", "booking_data.json")
     try:
-        with open(data_path, 'r') as f:
+        with open(data_path, "r") as f:
             data = json.load(f)
         return data
     except FileNotFoundError:
@@ -36,7 +39,9 @@ def sample_booking_data():
     except json.JSONDecodeError:
         pytest.fail(f"Error decoding JSON from file: {data_path}")
 
+
 # --- Function-Scoped Fixtures (Run for Each Test Needing Them) ---
+
 
 @pytest.fixture(scope="function")
 def auth_token(api_client: APIClient):
@@ -52,6 +57,7 @@ def auth_token(api_client: APIClient):
         return token
     except Exception as e:
         pytest.fail(f"Authentication process failed with an exception: {e}")
+
 
 # Note: The 'authenticated_api_client' fixture from the previous example
 # could also be defined here if needed. It would typically use the 'api_client'

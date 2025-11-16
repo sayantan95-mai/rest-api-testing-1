@@ -2,12 +2,15 @@
 # Uses the APIClient for consistency
 
 from src.api_client import APIClient
-from src import config # Import config module
+from src import config  # Import config module
 import logging
 
 logger = logging.getLogger(__name__)
 
-def authenticate(api_client: APIClient, username: str = None, password: str = None) -> str | None:
+
+def authenticate(
+    api_client: APIClient, username: str = None, password: str = None
+) -> str | None:
     """
     Authenticates using the provided API client and credentials.
 
@@ -27,15 +30,14 @@ def authenticate(api_client: APIClient, username: str = None, password: str = No
 
     if not auth_username or not auth_password:
         logger.error("Authentication credentials not found in config or arguments.")
-        return None # Or raise ValueError
+        return None  # Or raise ValueError
 
-    payload = {
-        "username": auth_username,
-        "password": auth_password
-    }
+    payload = {"username": auth_username, "password": auth_password}
     try:
         # Use the client's post method, passing the relative endpoint
-        response = api_client.post(config.AUTH_URL.replace(config.BASE_URL, ''), json=payload) # Pass relative path
+        response = api_client.post(
+            config.AUTH_URL.replace(config.BASE_URL, ""), json=payload
+        )  # Pass relative path
         # Assuming successful auth returns 200 and a token in JSON
         token = response.json().get("token")
         if not token:
@@ -43,7 +45,7 @@ def authenticate(api_client: APIClient, username: str = None, password: str = No
             return None
         logger.info("Authentication successful.")
         return token
-    except Exception as e: # Catch exceptions raised by send_request or .json()
+    except Exception as e:  # Catch exceptions raised by send_request or .json()
         logger.error(f"Authentication failed: {e}")
         # Option 1: Return None (as before)
         # return None

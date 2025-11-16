@@ -16,14 +16,15 @@ HEALTHCHECK_URL = f"{BASE_URL}/ping"
 BOOKING_URL = f"{BASE_URL}/booking"
 
 # Get credentials from environment variables
-AUTH_USERNAME = os.getenv("API_USERNAME", "admin") # Provide default or raise error if needed
-AUTH_PASSWORD = os.getenv("API_PASSWORD", "password123") # Provide default or raise error if needed
+AUTH_USERNAME = os.getenv(
+    "API_USERNAME", "admin"
+)  # Provide default or raise error if needed
+AUTH_PASSWORD = os.getenv(
+    "API_PASSWORD", "password123"
+)  # Provide default or raise error if needed
 
 
-DEFAULT_HEADERS = {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-}
+DEFAULT_HEADERS = {"Content-Type": "application/json", "Accept": "application/json"}
 
 # Example of how you might load default test data (optional)
 # import json
