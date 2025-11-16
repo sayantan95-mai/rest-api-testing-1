@@ -1,0 +1,48 @@
+name: CI - Lint and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Your project specifies Python 3.13
+        python-version: ["3.13"] 
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install uv (Python Package Manager)
+      run: |
+        pip install uv
+
+    - name: Install dependencies
+      run: |
+        # Use --all-groups to install dev dependencies (like pytest and ruff)
+        uv sync --all-groups
+
+    - name: Run linter (Ruff)
+      run: |
+        uv run ruff check .
+        uv run ruff format --check .
+
+    - name: Run tests (Pytest)
+      env:
+        # These secrets must be set in your GitHub repository's
+        # Settings > Secrets and variables > Actions
+        API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        API_USERNAME: ${{ secrets.API_USERNAME }}
+        API_PASSWORD: ${{ secrets.API_PASSWORD }}
+      run: |
+        uv run pytest
